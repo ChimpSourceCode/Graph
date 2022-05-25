@@ -1,0 +1,46 @@
+specVersion: 0.0.2
+description: ChimpDao
+repository: https://github.com/pancakeswap
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ChimpNFT
+    network: chapel
+    source:
+      address: "0x06058D34711DCEd4AB291c0524310f9afD9862aa"
+      abi: ChimpNFT
+      startBlock: 19568983
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ChimpNFT/ChimpNFT.wasm
+      entities:
+        - ChimpNFT
+      abis:
+        - name: ChimpNFT
+          file: ChimpNFT/abis/NFT.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: ChimpAuction
+    network: chapel
+    source:
+      address: "0xF543df5a6E271c3E044a393b1Ff4f8151fd53CF4"
+      abi: ChimpAuction
+      startBlock: 19569309
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ChimpNFT/ChimpNFT.wasm
+      entities:
+        - ChimpAuction
+      abis:
+        - name: ChimpAuction
+          file: ChimpAuction/abis/Auction.json
+      eventHandlers:
+        - event: onBidPlaced(uint256)
+          handler: handleBidPlaced

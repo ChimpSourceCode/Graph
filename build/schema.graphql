@@ -1,0 +1,30 @@
+type User @entity {
+  id: ID!
+  totalBidAmount: BigInt!
+  bids: [Bid]!
+}
+
+type Bid @entity {
+  "ID"
+  id: ID!
+  user: Bytes!
+  amount: BigInt!
+  txn:Bytes!
+  timestamp: BigInt!
+}
+
+type NFT @entity {
+  "ID"
+  id: ID!
+  owner: Bytes!
+  transfers: [Transfer]!
+}
+
+type Transfer @entity {
+  "ID"
+  id: ID!
+  txnHash: Bytes! @unique
+  from: Bytes!
+  to: Bytes!
+  timestamp: BigInt!
+}
