@@ -212,6 +212,21 @@ export class ChimpAuction extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBytes());
   }
 
+  totalBidders(): BigInt {
+    let result = super.call("totalBidders", "totalBidders():(uint256)", []);
+
+    return result[0].toBigInt();
+  }
+
+  try_totalBidders(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("totalBidders", "totalBidders():(uint256)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
   totalBids(): BigInt {
     let result = super.call("totalBids", "totalBids():(uint256)", []);
 

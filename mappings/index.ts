@@ -50,6 +50,7 @@ export function handleBidPlaced(event: onBidPlaced): void {
   } else {
     user = new User(event.transaction.from.toHex());
     user.bids = [bid.id];
+    user.totalBidAmount = new BigInt(0);
   }
   user.totalBidAmount = event.params.param0.plus(user.totalBidAmount);
   user.save();

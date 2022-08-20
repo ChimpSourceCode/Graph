@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0x06058D34711DCEd4AB291c0524310f9afD9862aa"
       abi: ChimpNFT
-      startBlock: 19568983
+      startBlock: 22089335
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -28,9 +28,9 @@ dataSources:
     name: ChimpAuction
     network: chapel
     source:
-      address: "0xF543df5a6E271c3E044a393b1Ff4f8151fd53CF4"
+      address: "0xC1EA0b9696Aa7175F57DC951DCafFde20891180b"
       abi: ChimpAuction
-      startBlock: 19569309
+      startBlock: 22089335
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
